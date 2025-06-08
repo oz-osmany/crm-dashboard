@@ -1,0 +1,60 @@
+@use 'sass:color';
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.sidebar {
+  width: 220px;
+  background-color: variables.$color-dark;
+  color: white;
+  padding: variables.$spacing-lg variables.$spacing-md;
+  min-height: 100vh;
+  transition: transform 0.3s ease;
+
+  @include mixins.respond-to(sm) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    z-index: 1000;
+
+    &--open {
+      transform: translateX(0);
+    }
+  }
+
+  &__close {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: variables.$spacing-md;
+
+    @include mixins.respond-to(sm) {
+      display: block;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$spacing-md;
+  }
+
+  &__link {
+    color: white;
+    font-weight: 500;
+    padding: variables.$spacing-sm;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background-color: color.scale( variables.$color-dark, $lightness: 10% );
+    }
+
+    &.active {
+      background-color: variables.$color-primary;
+    }
+  }
+}

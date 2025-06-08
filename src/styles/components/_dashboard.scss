@@ -1,0 +1,99 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.dashboard {
+  &__title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: variables.$spacing-md;
+  }
+
+  &__subtitle {
+    font-size: 1.2rem;
+    color: variables.$color-secondary;
+    margin-bottom: variables.$spacing-lg;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: variables.$spacing-lg;
+  }
+
+  &__card {
+    background-color: variables.$color-white;
+    padding: variables.$spacing-lg;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    text-align: center;
+
+    &-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: variables.$color-primary;
+    }
+
+    &-label {
+      font-size: 1rem;
+      color: variables.$color-secondary;
+      margin-top: variables.$spacing-sm;
+    }
+  }
+  &__recent {
+    margin-top: variables.$spacing-xl;
+  }
+
+  &__section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: variables.$spacing-md;
+    color: variables.$color-dark;
+  }
+
+  &__client-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: variables.$spacing-sm;
+  }
+
+  &__client-item {
+    background-color: variables.$color-white;
+    padding: variables.$spacing-md;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__client-name {
+    font-weight: 500;
+  }
+
+  &__client-status {
+    font-size: 0.9rem;
+    color: variables.$color-secondary;
+    text-transform: capitalize;
+  }
+  
+  &__actions {
+    margin-top: variables.$spacing-md;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    @include mixins.button(variables.$color-white, variables.$color-primary);
+    border: 1px solid variables.$color-primary;
+    font-weight: 500;
+
+    &:hover {
+      background-color: variables.$color-primary;
+      color: variables.$color-white;
+    }
+  }
+
+
+}

@@ -1,0 +1,33 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.clientes-layout {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: variables.$spacing-lg;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: variables.$color-dark;
+  }
+
+  &__button {
+    @include mixins.button(variables.$color-white, variables.$color-primary);
+    border: 1px solid variables.$color-primary;
+
+    &:hover {
+      background-color: variables.$color-primary;
+      color: variables.$color-white;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$spacing-md;
+  }
+}

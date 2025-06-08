@@ -1,0 +1,25 @@
+// src/styles/form.scss
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin-bottom: 24px;
+
+  input, textarea, select {
+    padding: 8px;
+    font-size: 1rem;
+  }
+
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  p {
+    font-weight: bold;
+    color: green;
+  }
+}

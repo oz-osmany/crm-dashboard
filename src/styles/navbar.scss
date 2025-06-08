@@ -1,0 +1,29 @@
+// src/styles/components/_navbar.scss
+
+.navbar {
+  background-color: #007bff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__title {
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  &__links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__link {
+    color: white;
+    text-decoration: none;
+
+    &--active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+// base/_reset.scss
+@use '../abstracts/variables';
+/* RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tipografía base */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: variables.$font-base;
+  background-color: variables.$color-light;
+  color: variables.$color-dark;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Listas sin puntos */
+ul, ol {
+  list-style: none;
+}
+
+/* Enlaces sin subrayado */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Imágenes fluidas */
+img {
+  max-width: 100%;
+  display: block;
+}

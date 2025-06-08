@@ -1,0 +1,36 @@
+// src/styles/layouts/_dashboardLayout.scss
+@use '../abstracts/variables';
+// .dashboard-layout {
+//   display: flex;
+//   flex-direction: column;
+//   height: 100vh;
+
+//   .main-content {
+//     display: flex;
+//     flex: 1;
+//   }
+
+//   .page-content {
+//     flex: 1;
+//     padding: variables.$spacing-lg;
+//     background-color: variables.$color-light;
+//     overflow-y: auto;
+//   }
+// }
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .main-content {
+    display: flex;
+    flex: 1;
+  }
+
+  .page-content {
+    flex: 1;
+    padding: variables.$spacing-lg;
+    background-color: variables.$color-light;
+    overflow-y: auto;
+  }
+}
