@@ -22,6 +22,7 @@ const UserList: React.FC = () => {
   };
 
   const handleDelete = async (id: number) => {
+    
     await axios.delete(`/clients/${id}`);
     fetchClients();
   };
