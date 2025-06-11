@@ -13,7 +13,6 @@ const Dashboard: React.FC = () => {
     if (token) {
       try {
         const decoded: { name?: string; email?: string } = jwtDecode(token);
-        console.log(decoded)
         setUserName(decoded.name ?? decoded.email ?? 'Usuario');
       } catch (error) {
         console.error('Error al decodificar el token');

@@ -23,3 +23,12 @@ export const deleteClient = async ( id: number) =>{
 
   return response.data;
 }
+export const editClient = async ( datos: any) =>{
+  const response = await axios.put(`${API_URL}/clients/${datos.id}`, datos,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+}
