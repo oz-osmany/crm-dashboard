@@ -3,6 +3,7 @@ import { deleteClient, editClient, getClients } from '../services/clientService'
 import ClientesLayout from '../components/ClientesLayout';
 import ConfirmModal from '../components/ConfirmModal';
 import ModalClient from "../components/ModalClient"
+import { Link } from 'react-router-dom';
 
 interface MyClients {
   id: number,
@@ -83,13 +84,15 @@ const Clientes: React.FC = () => {
 
   return (
     <ClientesLayout>
-      <input
-        className="clientes__search"
-        type="text"
-        placeholder="Buscar por nombre"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <div>
+        <input
+          className="clientes__search"
+          type="text"
+          placeholder="Buscar por nombre"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       {showModal && (
         <ConfirmModal
           message="Are you sure?"
@@ -107,15 +110,15 @@ const Clientes: React.FC = () => {
       <ul className="clientes__list">
         {filteredClients.map((client: MyClients) => (
           <li key={client.email} className="clientes__item">
-            <div className="clientes__info">
-              <strong>{client.name}</strong>
-              <span>{client.status}</span>
-              <span>{client.id}</span>
-            </div>
-            <div className="clientes__actions">
-              <button className="clientes__edit" onClick={()=> handleEdit(client)}>Editar</button>
-              <button className="clientes__delete" onClick={()=>handleDelete(client.id)}>Eliminar</button>
-            </div>
+            <Link to={`/dashboard/clientes/${client.id}`} className="clientes__link">
+                <strong>{client.name}</strong>
+                <span>{client.email}</span>
+                <span>{client.phone}</span>
+              </Link>
+              <div className="clientes__actions">
+                <button className="clientes__edit" onClick={()=> handleEdit(client)}>Editar</button>
+                <button className="clientes__delete" onClick={()=>handleDelete(client.id)}>Eliminar</button>
+              </div>
           </li>
         ))}
       </ul>

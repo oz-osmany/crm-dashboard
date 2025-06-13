@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
 import { login } from '../services/authServices';
 import { useNavigate, Link } from 'react-router-dom';
-import '../styles/loginForm.scss';
+import { useDispatch } from 'react-redux';
+import { loginSuccess } from '../store/slices/authSlice';
+// import '../styles/loginForm.scss';
+
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [msg, setMsg] = useState('');
-  const navigate = useNavigate(); // ✅
+  const navigate = useNavigate(); 
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await login(email, password);
+      const {res, decoded} =await login(email, password);
       setMsg('Login exitoso');
-      navigate('/dashboard'); // ✅ redirige después de login
+      dispatch(loginSuccess({ token: res.data.token, user: decoded.userId }));
+      navigate('/dashboard'); // redirige después de login
     } catch (err) {
       console.error(err);
       setMsg('Error al iniciar sesión');

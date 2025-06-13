@@ -24,9 +24,9 @@ export const login = async (email: string, password: string) => {
   localStorage.setItem(TOKEN_KEY, token); // Guardas el token que el backend devuelve
 
   const decoded = jwtDecode<TokenPayload>(token);
-  console.log(decoded)
+  // console.log(decoded)
   localStorage.setItem('userId', decoded.userId);
-  return res.data;
+  return {res, decoded};
 };
 
 export const register = async (name: string, email: string, password: string) => {

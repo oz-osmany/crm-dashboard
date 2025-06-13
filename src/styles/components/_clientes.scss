@@ -1,41 +1,53 @@
+@use 'sass:color';
 @use '../abstracts/variables';
 @use '../abstracts/mixins';
-.clientes {
-  &__title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: variables.$spacing-md;
-  }
 
-  &__search {
-    padding: variables.$spacing-sm;
-    width: 100%;
-    max-width: 400px;
+.clientes {
+  padding: variables.$spacing-xl;
+
+  &__title {
     margin-bottom: variables.$spacing-lg;
-    border: 1px solid variables.$color-gray;
-    border-radius: 4px;
-    font-size: 1rem;
+    font-size: 1.8rem;
   }
 
   &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: variables.$spacing-md;
   }
 
   &__item {
-    background: variables.$color-white;
+    background-color: variables.$color-blue-light;
     padding: variables.$spacing-md;
-    border-radius: 6px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.04);
+
+    &:hover {
+      background-color: color.scale(variables.$color-gray-light, $lightness: 3%);
+    }
   }
 
-  &__info {
+  &__link {
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    color: variables.$color-dark;
+    gap: 0.2rem;
+
+    strong {
+      font-size: 1.1rem;
+    }
+
+    span {
+      color: variables.$color-text-secondary;
+      font-size: 0.95rem;
+    }
   }
 
   &__actions {
@@ -44,13 +56,24 @@
 
     button {
       @include mixins.button(variables.$color-white, variables.$color-primary);
-      font-size: 0.9rem;
-
+       font-size: 0.9rem;
       &.clientes__delete {
         background-color: variables.$color-danger;
-        color:variables.$color-white;
+       color:variables.$color-white;
         border: none;
+       }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
       }
+    }
+
+    &__edit {
+      color: variables.$color-primary;
+    }
+
+    &__delete {
+      color: variables.$color-danger;
     }
   }
 }

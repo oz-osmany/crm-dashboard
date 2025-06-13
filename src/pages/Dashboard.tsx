@@ -34,7 +34,7 @@ const Dashboard: React.FC = () => {
  
   const total = clients.length;
   const cerrados = clients.filter((c: any) => c.status === 'cerrado').length;
-  const seguimiento = clients.filter((c: any) => c.status === 'En seguimiento').length;
+  const seguimiento = clients.filter((c: any) => c.status === 'seguimiento').length;
 
   const stats = [
     { label: 'Total clientes', value: total },
