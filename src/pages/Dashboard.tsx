@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import {jwtDecode} from 'jwt-decode';
-import { getClients } from '../services/clientService';
+// import { getClients } from '../services/clientService';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../hook';
+import { fetchClients } from '../store/slices/clientSlice';
+
 
 const Dashboard: React.FC = () => {
-  const [clients, setClients] = useState([]);
+
+  const dispatch = useAppDispatch();
+  const clients = useAppSelector(state => state.clients.clients);
   const [userName, setUserName] = useState('Usuario');
   const navigate = useNavigate();
   useEffect(() => {
@@ -21,8 +26,7 @@ const Dashboard: React.FC = () => {
 
     const fetchData = async () => {
       try {
-        const data = await getClients();
-        setClients(data);
+        dispatch(fetchClients());
       } catch (error) {
         console.error('Error al obtener los clientes:', error);
       }

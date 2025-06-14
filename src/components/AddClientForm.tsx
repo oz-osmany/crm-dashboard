@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import ClientesLayout from '../components/Clienteslayout';
-import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
+import ClientesLayout from '../components/ClientesLayout';
+import { addClient } from '../store/slices/clientSlice';
+import { useAppDispatch } from '../hook';
 
 
 const AddClient: React.FC = () => {
@@ -10,28 +11,23 @@ const AddClient: React.FC = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [notes, setNotes] = useState('');
+
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const newClient = {
+      name,
+      email,
+      phone,
+      status,
+      notes,
+    };
     
-    try {
-      const token = localStorage.getItem('token');
-      await axios.post(
-        'http://localhost:3000/clients',
-        { name, email, phone, status, notes },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      navigate('/dashboard/clientes');
-    } catch (error) {
-      console.error('Error al crear cliente:', error);
-      alert('Error al crear el cliente. Revisa la consola.');
-    }
+    dispatch(addClient(newClient ))
+    navigate('/dashboard/clientes');
+    
   };
 
   return (

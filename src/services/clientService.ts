@@ -1,34 +1,34 @@
-import axios from 'axios';
+// import axios from 'axios';
 
-const API_URL = 'http://localhost:3000'; // ajusta si usas proxy
+// const API_URL = 'http://localhost:3000'; // ajusta si usas proxy
 
-const token = localStorage.getItem('token');
-export const getClients = async () => {
+// const token = localStorage.getItem('token');
+// export const getClients = async () => {
     
-  const response = await axios.get(`${API_URL}/clients`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+//   const response = await axios.get(`${API_URL}/clients`, {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
 
-  return response.data;
-};
+//   return response.data;
+// };
 
-export const deleteClient = async ( id: number) =>{
-  const response = await axios.delete(`${API_URL}/clients/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+// export const deleteClient = async ( id: number) =>{
+//   const response = await axios.delete(`${API_URL}/clients/${id}`, {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
 
-  return response.data;
-}
-export const editClient = async ( datos: any) =>{
-  const response = await axios.put(`${API_URL}/clients/${datos.id}`, datos,{
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+//   return response.data;
+// }
+// export const editClient = async ( datos: any) =>{
+//   const response = await axios.put(`${API_URL}/clients/${datos.id}`, datos,{
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
 
-  return response.data;
-}
+//   return response.data;
+// }

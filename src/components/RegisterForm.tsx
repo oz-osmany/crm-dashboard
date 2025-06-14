@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { register } from '../services/authServices';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import '../styles/registerForm.scss';
+import { loginSuccess } from '../store/slices/authSlice';
 
 const RegisterForm: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [msg, setMsg] = useState('');
-  const navigate = useNavigate(); // ✅
+  const navigate = useNavigate(); // 
+  const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,10 +17,12 @@ const RegisterForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const { name,email, password} = formData;
     try {
-      await register(formData.name, formData.email, formData.password);
+      const data = await register(name, email, password);
       setMsg('Registro exitoso');
-      navigate('/dashboard'); // ✅ Redirige al panel
+      dispatch(loginSuccess(data))
+      navigate('/dashboard'); // Redirige al panel
     } catch (err) {
       setMsg('Error al registrarse');
       console.error(err);
