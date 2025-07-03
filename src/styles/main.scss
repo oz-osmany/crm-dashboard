@@ -5,17 +5,36 @@
 //Base
 @use 'base/reset';
 @use 'base/typography';
+@use 'base/activity-card';
 
 // Layouts
 @use 'layouts/dashboardLayout';
+@use 'layouts/clientLayout';
 
 // Components
 @use 'components/navbar';
 @use 'components/sidebar';
 @use 'components/dashboard';
-@use 'components/addClient';
-@use 'components/clientes';
-@use 'components/clientesLayout';
+@use 'components/card';
+
 @use 'components/confirmModal';
-@use 'components/detailClient';
 @use 'components/loginForm';
+@use 'components/deals';
+@use 'components/deal-form';
+
+@use 'components/task-form';
+@use 'components/tareas';
+@use 'components/task-board';
+@use 'components/modal';
+@use 'components/metrica';
+
+//clients
+@use 'components/client/clientes';
+@use 'components/client/client-deal';
+@use 'components/client/client-filters';
+@use 'components/client/clientesLayout';
+@use 'components/client/client-sidebar';
+@use 'components/client/addClient';
+@use 'components/client/client-detail-layout';
+@use 'components/client/client-info-siderbar';
+@use 'components/client/detailClient';

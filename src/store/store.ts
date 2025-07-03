@@ -1,11 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './slices/authSlice';
-import clientsReducer from './slices/clientSlice';
+import authReducer from '../features/auth/authSlice';
+import clientsReducer from '../features/clients/clientSlice';
+import dealsReducer from "../features/deals/dealSlice";
+import taskReducer from "../features/tasks/tasksSlices";
+import activityReducer from "../features/clients/clientActivitySlice";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
     clients: clientsReducer,
+    deals: dealsReducer,
+    tasks: taskReducer,
+    clientActivity: activityReducer,
     // puedes añadir más reducers aquí
   },
 });

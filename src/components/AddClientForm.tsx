@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import ClientesLayout from '../components/ClientesLayout';
-import { addClient } from '../store/slices/clientSlice';
+import { useNavigate } from 'react-router-dom';
+
 import { useAppDispatch } from '../hook';
+import { addClient } from '../features/clients/clientSlice';
 
 
 const AddClient: React.FC = () => {
   const [name, setName] = useState("");
-  const [status, setStatus] = useState('seguimiento');
+  const [status, setStatus] = useState<"activo" | "inactivo">('activo');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [notes, setNotes] = useState('');
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -22,7 +21,7 @@ const AddClient: React.FC = () => {
       email,
       phone,
       status,
-      notes,
+      
     };
     
     dispatch(addClient(newClient ))
@@ -31,7 +30,6 @@ const AddClient: React.FC = () => {
   };
 
   return (
-    <ClientesLayout>
       <div className="add-client__container">
         <form className="add-client" onSubmit={handleSubmit}>
           <label className="add-client__label">
@@ -64,7 +62,7 @@ const AddClient: React.FC = () => {
               required
             />
           </label>
-          <label className="add-client__label">
+          {/* <label className="add-client__label">
             Notes
             <input
               className="add-client__input"
@@ -73,16 +71,16 @@ const AddClient: React.FC = () => {
               onChange={(e) => setNotes(e.target.value)}
               required
             />
-          </label>
+          </label> */}
           <label className="add-client__label">
             status
             <select
               className="add-client__select"
               value={status}
-              onChange={(e) => setStatus(e.target.value)}
+              onChange={(e) => setStatus(e.target.value as 'activo' | 'inactivo')}
             >
-              <option value="seguimiento">Seguimiento</option>
-              <option value="cerrado">Cerrado</option>
+              <option value="activo">Activo</option>
+              <option value="inactivo">Inactivo</option>
             </select>
           </label>
           <button className="add-client__submit" type="submit">
@@ -90,7 +88,6 @@ const AddClient: React.FC = () => {
           </button>
         </form>
       </div>
-    </ClientesLayout>
   );
 };
 

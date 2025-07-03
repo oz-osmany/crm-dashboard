@@ -1,0 +1,83 @@
+.metrica {
+  padding: 2rem;
+  background: #f9fafb;
+
+  &__header {
+    margin-bottom: 2rem;
+
+    h2 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+  }
+
+  &__section {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+    h3 {
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.25rem;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .metrica-card {
+    background: #f3f4f6;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+
+    &__icon {
+      font-size: 2rem;
+      color: #2563eb;
+    }
+
+    h4 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    p {
+      margin: 0;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+  }
+
+  &__chart {
+    margin-top: 1rem;
+  }
+  &__footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1rem 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+  border-top: 1px solid #e5e7eb;
+
+  p {
+    margin: 0.25rem 0;
+  }
+}
+
+}

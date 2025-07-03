@@ -3,7 +3,7 @@ import { register } from '../services/authServices';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import '../styles/registerForm.scss';
-import { loginSuccess } from '../store/slices/authSlice';
+import { loginSuccess } from '../features/auth/authSlice';
 
 const RegisterForm: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });

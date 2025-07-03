@@ -1,6 +1,6 @@
-import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import type { RootState } from '../store';
+import type { RootState } from '../../store/store';
 
 const API_URL = 'http://localhost:3000/clients';
 
@@ -8,8 +8,8 @@ export interface ClientData {
   name: string;
   email: string;
   phone: string;
-  status: string;
-  notes: string;
+  due_date: string,
+  status: 'activo' | 'inactivo';
 }
 //Estos los asigna el backend
 export interface Client extends ClientData {
@@ -23,12 +23,14 @@ export interface ClientUnion {
   data: ClientData;
 }
 interface ClientState {
+  selectedClient: Client | null; // Para mostrar detalles
   clients: Client[];
   loading: boolean;
   error: string | null;
 }
 
 const initialState: ClientState = {
+  selectedClient: null,
   clients: [],
   loading: false,
   error: null,
@@ -39,13 +41,23 @@ const getToken = (getState: () => RootState) => getState().auth.token;
 
 // --- Thunks async ---
 export const fetchClients = createAsyncThunk<Client[], void, { state: RootState }>(
-  'clients/fetchClients',
+  'clients/fetchClients',//nombre de la accion
   async (_, { getState }) => {
     const token = getToken(getState);
     const res = await axios.get(API_URL, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return res.data;
+  }
+);
+export const fetchClientsById = createAsyncThunk<Client, string, { state: RootState }>(
+  'clients/fetchClientsById',//nombre de la accion
+  async (id, { getState }) => {
+    const token = getToken(getState);
+    const res = await axios.get(`${API_URL}/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return res.data[0];
   }
 );
 
@@ -103,6 +115,17 @@ const clientSlice = createSlice({
       .addCase(fetchClients.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Failed to fetch clients';
+      })
+      .addCase(fetchClientsById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchClientsById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.selectedClient = action.payload; // o donde lo quieras guardar
+      })
+      .addCase(fetchClientsById.rejected, (state) => {
+        state.loading = false;
+        state.error = 'Error al cargar el cliente';
       })
       .addCase(updateClient.fulfilled, (state, action) => {
         const updated = action.payload;

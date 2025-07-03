@@ -21,9 +21,13 @@
     color: white;
     text-decoration: none;
 
-    &--active {
-      font-weight: bold;
-      text-decoration: underline;
+   &--active {
+      color: variables.$color-dark;
+      border-bottom: 2px solid variables.$color-primary;
+    }
+
+    &:hover {
+      color: color.scale(variables.$color-primary, $lightness: -10%);
     }
   }
 }

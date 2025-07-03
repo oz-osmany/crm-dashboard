@@ -1,42 +1,76 @@
 @use 'sass:color';
-@use '../abstracts/mixins';
 @use '../abstracts/variables';
+@use '../abstracts/mixins';
 
-.navbar {
-  background-color: variables.$color-primary;
-  padding: variables.$spacing-md variables.$spacing-lg;
+.nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem 2rem;
+  background-color: variables.$color-primary;
+  border-bottom: 1px solid variables.$color-gray-light;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   color: variables.$color-white;
-  font-family: variables.$font-base;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
-  &__title {
+  &__logo {
     font-size: 1.5rem;
     font-weight: bold;
+    color: variables.$color-white;
   }
 
-  &__nav {
+  &__toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: variables.$color-dark;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  &__links {
     display: flex;
-    gap: variables.$spacing-md;
-    align-items: center;
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      flex-direction: column;
+      width: 100%;
+      background-color: variables.$color-white;
+      padding: 1rem 2rem;
+      gap: 1rem;
+      display: none;
+
+      &--open {
+        display: flex;
+      }
+    }
   }
 
   &__link {
-    color: variables.$color-white;
     text-decoration: none;
+    color: variables.$color-gray;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    &--active {
+      color: variables.$color-dark;
+      border-bottom: 2px solid variables.$color-primary;
+    }
 
     &:hover {
-      text-decoration: underline;
-    }
-
-    &.active {
-      font-weight: bold;
-      text-decoration: underline;
+      color: color.scale(variables.$color-primary, $lightness: -10%);
     }
   }
-
   &__button {
     @include mixins.button(variables.$color-white, variables.$color-primary);
     border: 1px solid variables.$color-white;
@@ -47,25 +81,9 @@
       color: variables.$color-primary;
     }
   }
-
-  @include mixins.respond-to(sm) {
-    flex-direction: column;
-    gap: variables.$spacing-sm;
-
-    &__nav {
-      flex-direction: column;
-    }
-  }
-}
-.navbar__hamburger {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: variables.$color-white;
-  cursor: pointer;
-
-  @include mixins.respond-to(sm) {
-    display: block;
+  &__nav {
+    display: flex;
+    gap: variables.$spacing-md;
+    align-items: center;
   }
 }

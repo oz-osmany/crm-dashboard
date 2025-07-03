@@ -1,0 +1,71 @@
+@use 'sass:color';
+@use '../../abstracts/variables';
+@use '../../abstracts/mixins';
+
+.client-deals {
+  margin-top: 3rem;
+  background-color: variables.$color-white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    h3 {
+      font-size: 1.5rem;
+      color: variables.$color-dark;
+      margin: 0;
+    }
+
+    .btn {
+      background-color: variables.$color-primary;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: color.scale(variables.$color-primary,$lightness: 10%);
+      }
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  &__item {
+    border: 1px solid variables.$color-gray;
+    border-left: 6px solid variables.$color-primary;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    background-color: variables.$color-gray-light;
+    transition: background-color 0.2s ease;
+
+    h4 {
+      margin: 0 0 0.5rem 0;
+      color: variables.$color-dark;
+    }
+
+    p {
+      margin: 0.2rem 0;
+      color: variables.$color-text-secondary;
+
+      strong {
+        color: variables.$color-dark;
+      }
+    }
+
+    &:hover {
+      background-color: color.scale(variables.$color-gray-light,$lightness: 4%);
+    }
+  }
+}

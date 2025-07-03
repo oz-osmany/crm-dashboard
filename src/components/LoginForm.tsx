@@ -3,7 +3,7 @@ import { login } from '../services/authServices';
 import { useNavigate, Link } from 'react-router-dom';
 // import '../styles/loginForm.scss';
 import { useDispatch } from 'react-redux';
-import { loginSuccess } from '../store/slices/authSlice';
+import { loginSuccess } from '../features/auth/authSlice';
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState('');

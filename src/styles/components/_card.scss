@@ -1,0 +1,37 @@
+@use 'sass:color';
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.card {
+  background-color: variables.$color-white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+  &__flex {
+    display: flex;
+    flex-direction: row;
+  }
+  &__main {
+    width: 80%;
+  }
+  &:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+    background-color: color.scale(variables.$color-gray-light,$lightness: 3%);
+  }
+
+  h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: variables.$color-dark;
+  }
+
+  p {
+    margin: 0.3rem 0;
+    color: variables.$color-text-secondary;
+
+    strong {
+      color: variables.$color-dark;
+    }
+  }
+}

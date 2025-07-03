@@ -1,0 +1,67 @@
+@use 'sass:color';
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.activity-card {
+  display: flex;
+  background-color: variables.$color-bg-light;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  gap: 1rem;
+
+  &__icon {
+    flex-shrink: 0;
+    font-size: 2rem;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    background-color: variables.$color-primary-light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__content {
+    flex-grow: 1;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: variables.$color-text-muted;
+    margin-bottom: 0.3rem;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  &__text {
+    font-size: 0.95rem;
+    color: variables.$color-text;
+  }
+
+  &--email &__icon {
+    background-color: color.scale(variables.$color-blue, $lightness: +40%);
+    color: variables.$color-blue;
+  }
+
+  &--note &__icon {
+    background-color: color.scale(variables.$color-orange, $lightness: +40%);
+    color: variables.$color-orange;
+  }
+
+  &--call &__icon {
+    background-color: color.scale(variables.$color-green, $lightness: +40%);
+    color: variables.$color-green;
+  }
+
+  &--task &__icon {
+    background-color: color.scale(variables.$color-purple, $lightness: +40%);
+    color: variables.$color-purple;
+  }
+}

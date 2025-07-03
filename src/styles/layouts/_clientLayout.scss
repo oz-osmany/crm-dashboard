@@ -1,0 +1,51 @@
+@use 'sass:color';
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.clientes-layout {
+  display: flex;
+  height: 100vh;
+  background-color: variables.$color-gray-light;
+
+  &__main {
+    flex: 1;
+    padding: 2rem;
+    background-color: variables.$color-white;
+    overflow-y: auto;
+  }
+}
+
+.clientes-sidebar__list {
+  padding: 1rem;
+  list-style: none;
+  font-size: 0.95rem;
+
+  li {
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.3rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    color: variables.$color-text;
+
+    &:hover {
+      background-color: color.scale(variables.$color-gray-light, $lightness: -5%);
+    }
+
+    &.active {
+      background-color: variables.$color-primary;
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+}
+
+.clientes-sidebar__add {
+  margin-top: 1rem;
+  color: variables.$color-primary;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -3,9 +3,10 @@
 // 🎨 Paleta de colores
 $color-primary: #007bff;
 $color-primary-dark: #0056b3;
+$color-primary-light: #dbeafe; 
 $color-secondary: #6c757d;
-$color-success: #28a745;
-$color-danger: #dc3545;
+// $color-success: #28a745;
+// $color-danger: #dc3545;
 $color-light: #f8f9fa;
 $color-dark: #343a40;
 $color-white: #fff;
@@ -13,7 +14,18 @@ $color-gray: #ccc; // Gris suave para bordes o inputs
 $color-blue-light: #2f48d21a;
 $color-gray-light: #f0f0f0;
 $color-text-secondary:#6c757d;
+$color-text: #333333;
+$color-text-light: #666666;
+$color-text-muted: #999999;
 
+$color-success: #2ecc71; // verde
+$color-danger: #e74c3c;  // rojo
+$color-bg: #f5f7fa;
+$color-bg-light: #f9fafb;
+$color-blue: #3b82f6;
+$color-green: #10b981;
+$color-orange: #f97316;
+$color-purple: #8b5cf6;
 
 // 📐 Espaciado base
 $spacing-xs: 0.25rem;

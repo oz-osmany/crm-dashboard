@@ -7,7 +7,7 @@ interface EditClientModalProps {
     email:string,
     phone: string,
     status: string,
-    notes: string
+    // notes: string
   };
   onClose: () => void;
   onSave: (updatedData: any) => void;
@@ -40,7 +40,7 @@ const ModalClient: React.FC<EditClientModalProps> = ({ client, onClose, onSave }
             <option value="seguimiento">Seguimiento</option>
             <option value="cerrado">Cerrado</option>
           </select>
-          <textarea name="notes" value={formData.notes}  onChange={handleChange}/>
+          {/* <textarea name="notes" value={formData.notes}  onChange={handleChange}/> */}
           <div className="confirm-modal__actions">
             <button type="submit" className="confirm-modal__confirm">Save</button>
             <button type="button" className="confirm-modal__cancel" onClick={onClose}>Cancel</button>

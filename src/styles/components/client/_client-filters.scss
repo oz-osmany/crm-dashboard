@@ -1,0 +1,66 @@
+@use 'sass:color';
+@use '../../abstracts/variables';
+@use '../../abstracts/mixins';
+
+.client-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  &__search {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+
+    input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      padding-left: 2.5rem;
+      border: 1px solid variables.$color-gray;
+      border-radius: 6px;
+      background-color: variables.$color-gray-light;
+      font-size: 1rem;
+      color: variables.$color-dark;
+      transition: border 0.3s ease;
+
+      &:focus {
+        border-color: variables.$color-primary;
+        background-color: white;
+        outline: none;
+      }
+    }
+
+    &::before {
+      content: "🔍";
+      position: absolute;
+      top: 50%;
+      left: 0.9rem;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: variables.$color-text-secondary;
+    }
+  }
+
+  &__status {
+    min-width: 160px;
+
+    select {
+      width: 100%;
+      padding: 0.7rem;
+      border: 1px solid variables.$color-gray;
+      border-radius: 6px;
+      background-color: variables.$color-gray-light;
+      font-size: 1rem;
+      color: variables.$color-dark;
+      transition: border 0.3s ease;
+
+      &:focus {
+        border-color: variables.$color-primary;
+        background-color: white;
+        outline: none;
+      }
+    }
+  }
+}

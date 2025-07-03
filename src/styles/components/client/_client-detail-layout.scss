@@ -1,0 +1,15 @@
+@use 'sass:color';
+@use '../../abstracts/variables';
+@use '../../abstracts/mixins';
+
+.cliente-detalle-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  height: 100vh;
+
+  &__main {
+    padding: 2rem;
+    background-color: variables.$color-white;
+    overflow-y: auto;
+  }
+}
